@@ -14,7 +14,7 @@
 
     <h1 class="leading-none mb-2">{{ $page->title }}</h1>
 
-    <p class="text-gray-700 text-xl md:mt-0">{{ $page->author }}  •  {{ date('F j, Y', $page->date) }}</p>
+    <p class="text-gray-700 text-xl md:mt-0">{{ $page->author }}  •  {{ date('d.m.Y', $page->date) }}</p>
 
     @if ($page->categories)
         @foreach ($page->categories as $i => $category)
@@ -26,7 +26,7 @@
         @endforeach
     @endif
 
-    <div class="border-b border-blue-200 mb-10 pb-4" v-pre>
+    <div class="border-b border-blue-200 mt-6 mb-10 pb-4" v-pre>
         @yield('content')
     </div>
 
@@ -34,7 +34,7 @@
         <div>
             @if ($next = $page->getNext())
                 <a href="{{ $next->getUrl() }}" title="Older Post: {{ $next->title }}">
-                    &LeftArrow; {{ $next->title }}
+                    ⬅ {{ $next->title }}
                 </a>
             @endif
         </div>
@@ -42,7 +42,7 @@
         <div>
             @if ($previous = $page->getPrevious())
                 <a href="{{ $previous->getUrl() }}" title="Newer Post: {{ $previous->title }}">
-                    {{ $previous->title }} &RightArrow;
+                    {{ $previous->title }} ➡
                 </a>
             @endif
         </div>
